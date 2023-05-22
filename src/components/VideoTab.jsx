@@ -27,7 +27,7 @@ function VideoTab({ title, description, videoURL, creatorId, creatorImgURL }) {
           </video>
         </div>
 
-        <div className="p-2 texture-video ">
+        <div className="px-2 py-2 h-full texture-video ">
           <h1 className="mx-2 text-3xl font-semibold text-gray-900">{title}</h1>
           <div className="flex bg-white bg-opacity-50 p-1.5 rounded-3xl ml-2  my-3 ">
             <img
