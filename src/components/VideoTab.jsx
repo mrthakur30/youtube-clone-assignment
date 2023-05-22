@@ -14,7 +14,7 @@ function VideoTab({ title, description, videoURL, creatorId, creatorImgURL }) {
         X
       </button>
 
-      <div className="h-screen  flex flex-col items-center w-full  rounded-md border ">
+      <div className="h-screen texture-video  flex flex-col items-center w-full  rounded-md border ">
         <div className="bg-black  flex flex-col items-center py-2 w-full">
           <video
             className="rounded-md object-cover"
@@ -29,15 +29,15 @@ function VideoTab({ title, description, videoURL, creatorId, creatorImgURL }) {
 
         <div className="p-2 ">
           <h1 className="mx-2 text-3xl font-semibold text-gray-900">{title}</h1>
-          <div className="flex bg-slate-100 p-1.5 rounded-3xl ml-2  my-3 ">
+          <div className="flex bg-white bg-opacity-50 p-1.5 rounded-3xl ml-2  my-3 ">
             <img
               className="inline-block h-12  rounded-full"
               src={creatorImgURL}
               alt="creator"
             />
-            <p className="text-2xl px-2 my-auto font-semibold">{creatorId}</p>
+            <p className="text-2xl  px-2 my-auto font-semibold">{creatorId}</p>
           </div>
-          <p className="mt-3 bg-slate-200 rounded-t-lg  h-fit  p-2 mx-2 text-md text-black">
+          <p className="mt-3 bg-white bg-opacity-50 rounded-t-lg  h-fit  p-2 mx-2 text-md text-black">
             {description}
           </p>
         </div>
