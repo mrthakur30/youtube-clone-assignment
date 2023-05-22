@@ -1,7 +1,8 @@
+/* eslint-disable react/prop-types */
 
 function Card({ creatorId , thumbnailURL, creatorImgURL }) {
   return (
-      <div className="md:w-[400px] hover:shadow-xl relative  hover:bg-slate-200  duration-150 w-full rounded-md border">
+      <div className="md:w-[400px] hover:shadow-xl relative bg-red-100 hover:bg-slate-200  duration-150 w-full rounded-md border">
         <img
           src={thumbnailURL}
           alt="thumbnail"

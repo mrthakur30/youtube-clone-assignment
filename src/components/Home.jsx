@@ -1,18 +1,22 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { PlayingVideoContext } from "../lib/context";
-import { useContext } from "react";
+import { useContext, useReducer } from "react";
+import { reducer } from "../lib/reducer";
 import VideoTab from "./VideoTab";
 import Card from "./Card";
-
+import Loader from "./Loader";
 function Home() {
   const { currentVideo, setCurrentVideo } = useContext(PlayingVideoContext);
-  const [page, setPage] = useState(0);
+  const [state, dispatch] = useReducer(reducer, { page: 1 });
   const [videosData, setVideosData] = useState(null);
+  const [loader, setLoader] = useState(false);
+  console.log(state);
   useEffect(() => {
     const getVideosData = async () => {
+      setLoader(true);
       const response = await axios.get(
-        `https://internship-service.onrender.com/videos?page=${page}`
+        `https://internship-service.onrender.com/videos?page=${state.page - 1}`
       );
       const items = response.data.data.posts;
       const videos = items.map((item) => {
@@ -28,13 +32,16 @@ function Home() {
       });
 
       setVideosData(videos);
+
+      setLoader(false);
     };
     getVideosData();
-  }, [page]);
+  }, [state.page]);
 
   console.log(videosData);
   return (
-    <>
+    <main className="">
+      {loader && <Loader />}
       {currentVideo ? (
         <VideoTab
           key={currentVideo.id}
@@ -45,20 +52,19 @@ function Home() {
           videoURL={currentVideo.videoURL}
         />
       ) : (
-        <div className=" h-full bg-slate-100 flex flex-col  items-center ">
-
-          <div className="flex bg-slate-100/20 z-50 shadow-sm backdrop-filter backdrop-blur-xl  w-full  justify-center  py-4 fixed flex-row">
+        <div className=" h-full texture  flex flex-col  items-center ">
+          <div className="flex bg-slate-100/20 z-10 shadow-sm backdrop-filter backdrop-blur-xl  w-full  justify-center  py-4 fixed flex-row">
             <button
-              onClick={() => setPage(page - 1)}
+              onClick={() => dispatch({ type: "DECREMENT" })}
               className="mx-1 cursor-not-allowed text-sm font-semibold text-gray-900"
             >
               ← Previous
             </button>
             <p className="mx-1 flex items-center rounded-md border border-gray-400 px-3 py-1 text-gray-900 hover:scale-105">
-              {" " + (page + 1) + " "} of 10
+              {" " + state.page + " "} of 10
             </p>
             <button
-              onClick={() => setPage(page + 1)}
+              onClick={() => dispatch({ type: "INCREMENT" })}
               className="mx-2 text-sm font-semibold text-gray-900"
             >
               Next →
@@ -83,10 +89,9 @@ function Home() {
                 );
               })}
           </div>
-
         </div>
       )}
-    </>
+    </main>
   );
 }
 

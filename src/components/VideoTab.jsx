@@ -1,7 +1,8 @@
+/* eslint-disable react/prop-types */
 import { PlayingVideoContext } from "../lib/context";
 import { useContext } from "react";
 
-function VideoTab({title , description,videoURL , creatorId , creatorImgURL }) {
+function VideoTab({ title, description, videoURL, creatorId, creatorImgURL }) {
   const { setCurrentVideo } = useContext(PlayingVideoContext);
   return (
     <div className="h-screen  flex flex-col items-center">
@@ -26,17 +27,15 @@ function VideoTab({title , description,videoURL , creatorId , creatorImgURL }) {
           </video>
         </div>
 
-        <div className="p-3 ">
-          <h1 className="m-2 text-3xl font-semibold text-gray-900">
-             {title}
-          </h1>
+        <div className="p-2 ">
+          <h1 className="mx-2 text-3xl font-semibold text-gray-900">{title}</h1>
           <div className="flex bg-slate-100 p-1.5 rounded-3xl ml-2  my-3 ">
-          <img
-            className="inline-block h-12  rounded-full"
-            src={creatorImgURL}
-            alt="creator"
-          />
-          <p className="text-2xl px-2 my-auto font-semibold">{creatorId}</p>
+            <img
+              className="inline-block h-12  rounded-full"
+              src={creatorImgURL}
+              alt="creator"
+            />
+            <p className="text-2xl px-2 my-auto font-semibold">{creatorId}</p>
           </div>
           <p className="mt-3 bg-slate-200 rounded-t-lg  h-fit  p-2 mx-2 text-md text-black">
             {description}
