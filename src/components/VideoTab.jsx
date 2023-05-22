@@ -5,7 +5,7 @@ import { useContext } from "react";
 function VideoTab({ title, description, videoURL, creatorId, creatorImgURL }) {
   const { setCurrentVideo } = useContext(PlayingVideoContext);
   return (
-    <div className="h-screen  flex flex-col items-center">
+    <div className="h-screen flex flex-col items-center">
       <button
         onClick={() => setCurrentVideo(null)}
         type="button"
@@ -14,7 +14,7 @@ function VideoTab({ title, description, videoURL, creatorId, creatorImgURL }) {
         X
       </button>
 
-      <div className="h-screen texture-video  flex flex-col items-center w-full  rounded-md border ">
+      <div className="h-screen   flex flex-col items-center w-full  rounded-md border ">
         <div className="bg-black  flex flex-col items-center py-2 w-full">
           <video
             className="rounded-md object-cover"
@@ -27,7 +27,7 @@ function VideoTab({ title, description, videoURL, creatorId, creatorImgURL }) {
           </video>
         </div>
 
-        <div className="p-2 ">
+        <div className="p-2 texture-video ">
           <h1 className="mx-2 text-3xl font-semibold text-gray-900">{title}</h1>
           <div className="flex bg-white bg-opacity-50 p-1.5 rounded-3xl ml-2  my-3 ">
             <img
